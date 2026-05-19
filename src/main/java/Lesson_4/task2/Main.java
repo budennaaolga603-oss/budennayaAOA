@@ -4,9 +4,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Shape circle    = new Circle("Круг", 5, "красный", "чёрный");
-        Shape rectangle = new Rectangle("Прямоугольник", 4, 6, "синий", "белый");
-        Shape triangle  = new Triangle("Треугольник", 3, 4, 5, "зелёный", "серый");
+        Shape circle    = new Circle("Круг", 5, new Color("красный", "чёрный"));
+        Shape rectangle = new Rectangle("Прямоугольник", 4, 6, new Color("синий", "белый"));
+        Shape triangle  = new Triangle("Треугольник", 3, 4, 5, new Color("зелёный", "серый"));
 
         circle.printInfo();
         rectangle.printInfo();

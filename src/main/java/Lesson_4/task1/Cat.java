@@ -40,8 +40,8 @@ public class Cat extends Animal {
     }
 
     public void eat(Bowl bowl, int amount) {
-        boolean success = bowl.tryEat(amount);
-        if (success) {
+        if (bowl.getFood() >= amount) {
+            bowl.takeFood(amount);
             isFull = true;
             System.out.println(name + " покушал. Сытость: да.");
         } else {

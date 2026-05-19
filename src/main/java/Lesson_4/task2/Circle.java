@@ -4,14 +4,12 @@ public class Circle implements Shape {
 
     private String name;
     private double radius;
-    private String fillColor;
-    private String borderColor;
+    private Color color;
 
-    public Circle(String name, double radius, String fillColor, String borderColor) {
+    public Circle(String name, double radius, Color color) {
         this.name = name;
         this.radius = radius;
-        this.fillColor = fillColor;
-        this.borderColor = borderColor;
+        this.color = color;
     }
 
     @Override
@@ -31,11 +29,11 @@ public class Circle implements Shape {
 
     @Override
     public String getFillColor() {
-        return fillColor;
+        return color.getFillColor();
     }
 
     @Override
     public String getBorderColor() {
-        return borderColor;
+        return color.getBorderColor();
     }
 }

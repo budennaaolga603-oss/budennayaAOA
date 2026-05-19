@@ -6,16 +6,14 @@ public class Triangle implements Shape {
     private double a;
     private double b;
     private double c;
-    private String fillColor;
-    private String borderColor;
+    private Color color;
 
-    public Triangle(String name, double a, double b, double c, String fillColor, String borderColor) {
+    public Triangle(String name, double a, double b, double c, Color color) {
         this.name = name;
         this.a = a;
         this.b = b;
         this.c = c;
-        this.fillColor = fillColor;
-        this.borderColor = borderColor;
+        this.color = color;
     }
 
     @Override
@@ -36,11 +34,11 @@ public class Triangle implements Shape {
 
     @Override
     public String getFillColor() {
-        return fillColor;
+        return color.getFillColor();
     }
 
     @Override
     public String getBorderColor() {
-        return borderColor;
+        return color.getBorderColor();
     }
 }

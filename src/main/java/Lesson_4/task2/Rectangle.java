@@ -5,15 +5,13 @@ public class Rectangle implements Shape {
     private String name;
     private double width;
     private double height;
-    private String fillColor;
-    private String borderColor;
+    private Color color;
 
-    public Rectangle(String name, double width, double height, String fillColor, String borderColor) {
+    public Rectangle(String name, double width, double height, Color color) {
         this.name = name;
         this.width = width;
         this.height = height;
-        this.fillColor = fillColor;
-        this.borderColor = borderColor;
+        this.color = color;
     }
 
     @Override
@@ -33,11 +31,11 @@ public class Rectangle implements Shape {
 
     @Override
     public String getFillColor() {
-        return fillColor;
+        return color.getFillColor();
     }
 
     @Override
     public String getBorderColor() {
-        return borderColor;
+        return color.getBorderColor();
     }
 }

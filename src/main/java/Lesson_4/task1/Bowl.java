@@ -17,12 +17,7 @@ public class Bowl {
         System.out.println("В миску добавлено " + amount + " ед. еды. Итого: " + food);
     }
 
-    public boolean tryEat(int amount) {
-        if (food >= amount) {
-            food -= amount;
-            return true;
-        } else {
-            return false;
-        }
+    public void takeFood(int amount) {
+        food -= amount;
     }
 }
