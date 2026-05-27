@@ -1,37 +1,37 @@
 package Lesson_7;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import org.testng.annotations.Test;
+import static org.testng.Assert.*;
 
 public class ComparatorTest {
 
     @Test
-    void testFirstIsGreater() {
-        assertEquals(1, NumberComparator.compare(10, 5));
+    public void testFirstIsGreater() {
+        assertEquals(NumberComparator.compare(10, 5), 1);
     }
 
     @Test
-    void testFirstIsLess() {
-        assertEquals(-1, NumberComparator.compare(5, 10));
+    public void testFirstIsLess() {
+        assertEquals(NumberComparator.compare(5, 10), -1);
     }
 
     @Test
-    void testEqual() {
-        assertEquals(0, NumberComparator.compare(5, 5));
+    public void testEqual() {
+        assertEquals(NumberComparator.compare(5, 5), 0);
     }
 
     @Test
-    void testIsEqual() {
+    public void testIsEqual() {
         assertTrue(NumberComparator.isEqual(5, 5));
     }
 
     @Test
-    void testIsGreater() {
+    public void testIsGreater() {
         assertTrue(NumberComparator.isGreater(10, 5));
     }
 
     @Test
-    void testIsLess() {
+    public void testIsLess() {
         assertTrue(NumberComparator.isLess(5, 10));
     }
 }

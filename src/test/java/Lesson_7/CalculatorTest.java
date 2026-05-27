@@ -1,32 +1,32 @@
 package Lesson_7;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import org.testng.annotations.Test;
+import static org.testng.Assert.*;
 
 public class CalculatorTest {
 
     @Test
-    void testAdd() {
-        assertEquals(10, Calculator.add(3, 7));
+    public void testAdd() {
+        assertEquals(Calculator.add(3, 7), 10);
     }
 
     @Test
-    void testSubtract() {
-        assertEquals(5, Calculator.subtract(10, 5));
+    public void testSubtract() {
+        assertEquals(Calculator.subtract(10, 5), 5);
     }
 
     @Test
-    void testMultiply() {
-        assertEquals(12, Calculator.multiply(3, 4));
+    public void testMultiply() {
+        assertEquals(Calculator.multiply(3, 4), 12);
     }
 
     @Test
-    void testDivide() {
-        assertEquals(2.5, Calculator.divide(5, 2), 0.001);
+    public void testDivide() {
+        assertEquals(Calculator.divide(5, 2), 2.5, 0.001);
     }
 
-    @Test
-    void testDivideByZeroThrowsException() {
-        assertThrows(IllegalArgumentException.class, () -> Calculator.divide(5, 0));
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void testDivideByZeroThrowsException() {
+        Calculator.divide(5, 0);
     }
 }

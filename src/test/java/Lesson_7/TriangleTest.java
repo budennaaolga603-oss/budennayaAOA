@@ -1,27 +1,27 @@
 package Lesson_7;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import org.testng.annotations.Test;
+import static org.testng.Assert.*;
 
 public class TriangleTest {
 
     @Test
-    void testAreaOfRightTriangle() {
-        assertEquals(6.0, Triangle.getArea(3, 4, 5), 0.001);
+    public void testAreaOfRightTriangle() {
+        assertEquals(Triangle.getArea(3, 4, 5), 6.0, 0.001);
     }
 
     @Test
-    void testAreaOfEquilateralTriangle() {
-        assertEquals(43.301, Triangle.getArea(10, 10, 10), 0.001);
+    public void testAreaOfEquilateralTriangle() {
+        assertEquals(Triangle.getArea(10, 10, 10), 43.301, 0.001);
     }
 
-    @Test
-    void testNegativeSideThrowsException() {
-        assertThrows(IllegalArgumentException.class, () -> Triangle.getArea(-1, 4, 5));
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void testNegativeSideThrowsException() {
+        Triangle.getArea(-1, 4, 5);
     }
 
-    @Test
-    void testInvalidTriangleThrowsException() {
-        assertThrows(IllegalArgumentException.class, () -> Triangle.getArea(1, 2, 10));
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void testInvalidTriangleThrowsException() {
+        Triangle.getArea(1, 2, 10);
     }
 }
