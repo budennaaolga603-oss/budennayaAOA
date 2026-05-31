@@ -24,8 +24,7 @@ public class MtsPaySectionTest extends BaseTest {
     public void checkSectionTitle() {
         WebElement title = driver.findElement(
                 By.xpath("//section[@class='pay']//h2"));
-        assertTrue(title.getText().contains("Онлайн пополнение"));
-        assertTrue(title.getText().contains("без комиссии"));
+        assertEquals("Онлайн пополнение\nбез комиссии", title.getText());
     }
 
     // Проверить наличие логотипов платёжных систем;
@@ -45,38 +44,31 @@ public class MtsPaySectionTest extends BaseTest {
         WebElement link = driver.findElement(
                 By.xpath("//a[@href='/help/poryadok-oplaty-i-bezopasnost-internet-platezhey/']"));
         link.click();
-        assertNotEquals("https://www.mts.by/", driver.getCurrentUrl());
+        assertEquals("https://www.mts.by/help/poryadok-oplaty-i-bezopasnost-internet-platezhey/",
+                driver.getCurrentUrl());
     }
 
     //Заполнить поля и проверить работу кнопки «Продолжить»
     @Test
     public void checkContinueButton() {
-
-        //Закрыть баннер куков, если появился
         try {
             WebDriverWait waitCookie = new WebDriverWait(driver, 3);
             WebElement cookie = waitCookie.until(ExpectedConditions.elementToBeClickable(
-                    By.id("cookie-agree")
-            ));
+                    By.id("cookie-agree")));
             cookie.click();
         } catch (Exception e) {
-
         }
-
-        WebElement phoneField = driver.findElement(
-                By.id("connection-phone"));
-
-        WebElement sumField = driver.findElement(
-                By.id("connection-sum"));
-
+        WebElement phoneField = driver.findElement(By.id("connection-phone"));
+        WebElement sumField = driver.findElement(By.id("connection-sum"));
         phoneField.sendKeys("297777777");
         sumField.sendKeys("158");
-
         WebElement continueButton = driver.findElement(
                 By.xpath("//form[@id='pay-connection']//button[@type='submit']"));
         continueButton.click();
-
         WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement iframe = wait.until(ExpectedConditions.presenceOfElementLocated(
+                By.xpath("//iframe")));
+        assertNotNull(iframe);
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(
                 By.xpath("//iframe")));
         driver.switchTo().defaultContent();
